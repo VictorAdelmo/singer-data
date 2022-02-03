@@ -1,0 +1,27 @@
+{
+  "name": "famosos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon"
+  },
+  "author": "Victor Adelmo",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-rekognition": "^3.49.0",
+    "@aws-sdk/client-s3": "^3.32.0",
+    "@aws-sdk/node-http-handler": "^3.32.0",
+    "@azure/cognitiveservices-computervision": "^8.1.0",
+    "aws-sdk": "^2.1066.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^14.3.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "multer": "^1.4.4",
+    "node-fetch": "^3.2.0",
+    "nodemon": "^2.0.15",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}

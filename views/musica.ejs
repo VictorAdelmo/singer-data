@@ -1,0 +1,117 @@
+<html>
+
+<head>
+  <script src="/script.js" type="module" defer></script>
+  <link rel="stylesheet" href="/estilo.css" />
+</head>
+
+
+<body>
+  <form action="/inserir-img" method="post" enctype="multipart/form-data">
+    <!-- Upload Area -->
+    <div id="uploadArea" class="upload-area">
+      <!-- Header -->
+      <div class="upload-area__header">
+        <h1 class="upload-area__title">Coloque a imagem de um Cantor</h1>
+        <p class="upload-area__paragraph">
+          O tipo da imagem deve ser
+          <strong class="upload-area__tooltip">
+            Igual
+            <span class="upload-area__tooltip-data"></span> <!-- Data Will be Comes From Js -->
+          </strong>
+        </p>
+        <%if(locals.msgError !=null){ %>
+          <p class="upload-area__paragraph" style="color: red;">
+            <%=msgError%>
+          </p>
+          <%}%>
+      </div>
+      <!-- End Header -->
+
+      <!-- Drop Zoon -->
+      <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
+        <span class="drop-zoon__icon">
+          <i class='bx bxs-file-image'></i>
+        </span>
+        <p class="drop-zoon__paragraph">Clique Aqui para fazer o Upload</p>
+        <span id="loadingText" class="drop-zoon__loading-text">Por favor Espere</span>
+        <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image" draggable="false">
+        <input type="file" id="fileInput" name="file" class="drop-zoon__file-input" accept="image/*">
+      </div>
+      <!-- End Drop Zoon -->
+
+      <!-- File Details -->
+      <div id="fileDetails" class="upload-area__file-details file-details">
+        <h3 class="file-details__title">Upload de Imagem com Sucesso</h3>
+
+        <div id="uploadedFile" class="uploaded-file">
+          <div class="uploaded-file__icon-container">
+            <i class='bx bxs-file-blank uploaded-file__icon'></i>
+            <span class="uploaded-file__icon-text"></span> <!-- Data Will be Comes From Js -->
+          </div>
+
+          <div id="uploadedFileInfo" class="uploaded-file__info">
+            <span class="uploaded-file__name">Proejct 1</span>
+            <span class="uploaded-file__counter">0%</span>
+            <button type="submit">Reconhecer</button>
+          </div>
+        </div>
+      </div>
+      <!-- End File Details -->
+    </div>
+    <!-- End Upload Area -->
+  </form>
+
+  <%if(id !=null) {%>
+    <iframe style="border-radius:12px;float:right;margin-top: 10px;margin-bottom: 20px;"
+      src="https://open.spotify.com/embed/artist/<%=id%>?utm_source=generator" width="65%" height="380" frameBorder="0"
+      allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <%}else{%>
+      <iframe style="border-radius:12px;float:right;margin-top: 10px;margin-bottom: 20px;"
+        src="https://open.spotify.com/embed/artist/0EeQBlQJFiAfJeVN2vT9s0?utm_source=generator" width="65%" height="380"
+        frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <%}%>
+
+        <%if(locals.lista !=null) {%>
+
+          <% function formatMoney(number) { return number.toLocaleString('en-US', { style: 'currency' , currency: 'USD'
+            }); } %>
+
+            <table>
+              <thead>
+                <th>Nome</th>
+                <th>Genêro</th>
+                <th>Idade</th>
+                <th>Fortuna</th>
+                <th>Nascimento</th>
+                <th>Altura</th>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td data-label="Nome">
+                    <%=lista.name%>
+                  </td>
+                  <td data-label="Genêro">
+                    <%=lista.gender%>
+                  </td>
+                  <td data-label="Idade">
+                    <%=lista.age%>
+                  </td>
+                  <td data-label="Fortuna">
+                    <%= formatMoney(lista.net_worth)%> U$D
+                  </td>
+                  <td data-label="Nascimento">
+                    <%=lista.birthday%>
+                  </td>
+                  <td data-label="Altura">
+                    <%=lista.height%>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <%}%>
+</body>
+
+</html>

@@ -24,7 +24,7 @@ spotifyApi.clientCredentialsGrant().then(
 
 })
 
-const pesquisarArtista = (req, res, artista) => {
+const searchArtistPlaylist= (artista) => {
   return new Promise((resolve, rejected) => {
     try {
       spotifyApi.searchArtists("artist:" + artista).then(
@@ -57,4 +57,4 @@ const pesquisarSonsPopularesArtista = (req, res, id) => {
     }
   );
 };
-module.exports = { pesquisarArtista, pesquisarSonsPopularesArtista };
+module.exports = { searchArtistPlaylist, pesquisarSonsPopularesArtista };

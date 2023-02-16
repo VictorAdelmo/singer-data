@@ -11,8 +11,8 @@ function scopesConfig (req,res){
 }
 
 async function pesquisarArtista(req,res){
-    const pegarNomeId = await metodosSpotify.pesquisarArtista(req,res,"Nipsey Hussle");
-    const pegarInfo = await cantorAnalisar.pegarInformacoesArtista(req,res,"Nipsey Hussle");
+    const pegarNomeId = await metodosSpotify.searchArtistPlaylist("Nipsey Hussle");
+    const pegarInfo = await cantorAnalisar.getPersonalInformation("Nipsey Hussle");
     return res.render("musica",{id: pegarNomeId, lista: pegarInfo});
 }
 

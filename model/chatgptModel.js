@@ -25,16 +25,18 @@ async function makeBiography(artist) {
       answer = JSON.parse(answer);
       answer = answer.replace(/\n/g, '');
       
+      console.log(answer)
       resolve(answer);
 
     }catch (error) {
         if (error.response) {
           console.log(error.response.status);
           console.log(error.response.data);
+          resolve("");
         } else {
           console.log(error.message);
+          resolve("");
         }
-        resolve("");
     }
 });
 }

@@ -1,5 +1,5 @@
-const celebrityInformations = require("../model/reconhecerCantor");
-const spotify = require("../model/metodosSpotify");
+const celebrityInformations = require("../model/ninjaApiModel");
+const spotify = require("../model/spotifyModel");
 const aws = require("../model/amazonRecogition");
 const chatgpt = require("../model/chatgptModel");
 
@@ -15,9 +15,9 @@ async function analyzeSinger(req,res) {
     const celebrityName = await aws.recognize_celebrity(imgBase64ToBytes);
 
     if(celebrityName != null){
-        const spotifyPlaylistKey = await spotify.searchArtistPlaylist(celebrityName);
         let personalInformations = await celebrityInformations.getPersonalInformation(celebrityName);
         const biography = await chatgpt.makeBiography(celebrityName);
+        const spotifyPlaylistKey = await spotify.getArtist(celebrityName);
 
         if(personalInformations == null){
             personalInformations = [];
